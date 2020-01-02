@@ -28,7 +28,7 @@ public class BatchProducer {
         props.put(ProducerConfig.BATCH_SIZE_CONFIG, "10000"); //10Kb batch size
         props.put(ProducerConfig.LINGER_MS_CONFIG, "5000"); //5 sec linger.ms
 
-        return new KafkaProducer<Long, String>(props);
+        return new KafkaProducer<>(props);
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -36,8 +36,7 @@ public class BatchProducer {
         while(true) {
             //define a key
             long currTime = System.currentTimeMillis();
-            long key = Long.valueOf(String.valueOf(currTime).substring(0,2));
-            //long key = Long.valueOf(String.valueOf(currTime))%3;
+            long key = currTime%3;
             logger.info("Key : {}", key);
             ProducerRecord<Long, String> record = new ProducerRecord<>(TOPIC,
                     key, "msg_"+System.currentTimeMillis());
