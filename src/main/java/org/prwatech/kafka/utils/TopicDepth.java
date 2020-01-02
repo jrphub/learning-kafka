@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class TopicDepth {
     private static final Logger logger = LoggerFactory.getLogger(TopicDepth.class);
 
-    private static final String TOPIC="employee-custom-serde";
+    private static final String TOPIC="employee-json-serde";
     private static final Object BOOTSTRAP_SERVERS = "localhost:9092";
 
     private static Consumer<String, String> createConsumer() {

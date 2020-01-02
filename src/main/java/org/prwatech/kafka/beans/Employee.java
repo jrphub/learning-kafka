@@ -9,6 +9,9 @@ public class Employee {
         this.employeeName = employeeName;
     }
 
+    public Employee() {
+    }
+
     public long getEmployeeId() {
         return employeeId;
     }

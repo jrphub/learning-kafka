@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package prwatech;
+
+option java_package = "org.prwatech.kafka.beans";
+option java_outer_classname = "CompanyResources";
+
+message Company {
+    optional int32 id = 1;
+    optional string name = 2;
+    repeated Employee employee = 3;
+}
+
+message Employee {
+    optional int32 employeeId = 1;
+    optional string employeeName = 2;
+}
