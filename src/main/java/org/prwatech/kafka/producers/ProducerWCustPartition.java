@@ -2,6 +2,7 @@ package org.prwatech.kafka.producers;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,9 +22,9 @@ public class ProducerWCustPartition {
         String brokers = "localhost:9092";
         props.put("bootstrap.servers", brokers);
         props.put("key.serializer",
-                "org.apache.kafka.common.serialization.StringSerializer");
+                StringSerializer.class.getName());
         props.put("value.serializer",
-                "org.apache.kafka.common.serialization.StringSerializer");
+                StringSerializer.class.getName());
         props.put("batch.size", "10000"); //10Kb batch size
         props.put("linger.ms", "5000"); //5 sec linger.ms
         props.put("partitioner.class","org.prwatech.kafka.partitioner.CustomPartitioner");

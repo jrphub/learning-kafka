@@ -3,6 +3,7 @@ package org.prwatech.kafka.producers;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.common.serialization.LongSerializer;
 import org.prwatech.kafka.beans.Employee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class SerializedProducer {
         String brokers = "localhost:9092";
         props.put("bootstrap.servers", brokers);
         props.put("key.serializer",
-                "org.apache.kafka.common.serialization.LongSerializer");
+                LongSerializer.class.getName());
         props.put("value.serializer",
                 "org.prwatech.kafka.serializers.CustomSerializer");
         return new KafkaProducer<>(props);
